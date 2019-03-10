@@ -32,6 +32,24 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Qwerty　デフォルト
+ * ,------------------------------------------------------------------------------------------------------.
+ * |   Tab     |    Q   |    W    |     E     |   R  |   T  |     -    |   Y  |   U  |   I  |   O  |   P  |
+ * |-----------+--------+---------+-----------+------+------+----------+------+------+------+------+------|
+ * |   Ctrl    |    A   |    S    |     D     |   F  |   G  |     -    |   H  |   J  |   K  |   L  |   ;  |
+ * |-----------+--------+---------+-----------+------+------+----------+------+------+------+------+------|
+ * |   Shift   |    Z   |    X    |     C     |   V  |   B  |     -    |   N  |   M  |   ,  |   .  |   /  |
+ * |-----------+--------+---------+-----------+------+------+----------+------+------+------+------+------|
+ * | RAISE,Eisu| FEATURE| Ctrl,TAB| LOWER,Kana| Space|  GUI | Alt,Enter| Bksp | Left | Down |  Up  |Right |
+ * `------------------------------------------------------------------------------------------------------'
+ */
+[_QWERTY] = LAYOUT_ortho_4x12(
+  KC_TAB,               KC_Q,    KC_W,          KC_E,                  KC_R,   KC_T,    KC_MINS,       KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    \
+  KC_LCTL,              KC_A,    KC_S,          KC_D,                  KC_F,   KC_G,    KC_MINS,       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, \
+  KC_LSFT,              KC_Z,    KC_X,          KC_C,                  KC_V,   KC_B,    KC_MINS,       KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, \
+  LT(_RAISE, KC_LANG2), FEATURE, CTL_T(KC_TAB), LT(_LOWER, KC_LANG1),  KC_SPC, KC_LGUI, ALT_T(KC_ENT), KC_BSPC, KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT  \
+),
+
+/* Coding用
  * ,----------------------------------------------------------------------------------------------------------.
  * |      Q    |     W     |    E   |    R    |     T     |   {  |    }    |  Y   |  U   |  I   |  O   |  P   |
  * |-----------+-----------+--------+---------+-----------+------+---------+------+------+------+------+------|
@@ -42,12 +60,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | RAISE,Eisu| LOWER,Kana| FEATURE| Ctrl,TAB| Alt,Space | GUI  |SFT,Enter| Bksp | Left | Down |  Up  |Right |
  * `----------------------------------------------------------------------------------------------------------'
  */
-[_QWERTY] = LAYOUT_ortho_4x12(
-   KC_Q,                KC_W,                KC_E,    KC_R,          KC_T,          KC_LCBR, KC_RCBR,       KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    \
-   KC_A,                KC_S,                KC_D,    KC_F,          KC_G,          S(KC_9), S(KC_0),       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, \
-   KC_Z,                KC_X,                KC_C,    KC_V,          KC_B,          KC_QUOT, S(KC_QUOT),    KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, \
-   LT(_RAISE, KC_LANG2), LT(_LOWER, KC_LANG1), FEATURE, CTL_T(KC_TAB), ALT_T(KC_SPC), KC_LGUI, SFT_T(KC_ENT), KC_BSPC, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT  \
-),
+/*[_QWERTY] = LAYOUT_ortho_4x12(
+ *   KC_Q,                KC_W,                KC_E,    KC_R,          KC_T,          KC_LCBR, KC_RCBR,       KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    \
+ *   KC_A,                KC_S,                KC_D,    KC_F,          KC_G,          S(KC_9), S(KC_0),       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, \
+ *   KC_Z,                KC_X,                KC_C,    KC_V,          KC_B,          KC_QUOT, S(KC_QUOT),    KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, \
+ *   LT(_RAISE, KC_LANG2), LT(_LOWER, KC_LANG1), FEATURE, CTL_T(KC_TAB), ALT_T(KC_SPC), KC_LGUI, SFT_T(KC_ENT), KC_BSPC, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT  \
+ *),
+ */
 
 /* Colemak
  * ,-----------------------------------------------------------------------------------.
@@ -64,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,  KC_G,   KC_J,   KC_L,  KC_U,    KC_Y,    KC_SCLN, KC_BSPC, \
   KC_ESC,  KC_A,    KC_R,    KC_S,    KC_T,  KC_D,   KC_H,   KC_N,  KC_E,    KC_I,    KC_O,    KC_QUOT, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,   KC_K,   KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , \
-  ADJUST,  KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  ADJUST,  KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT  \
 ),
 
 /* Dvorak
@@ -154,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, _______, _______,       _______, KC_7, KC_8,    KC_9,   KC_MINS, \
   KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______, _______, _______,       _______, KC_4, KC_5,    KC_6,   KC_PLUS, \
   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, KC_NUHS,       KC_NUBS, KC_1, KC_2,    KC_3,   KC_ASTR, \
-  _______, _______, _______, _______, _______, _______, SFT_T(KC_ENT), KC_SPC,  KC_0, KC_BSPC, KC_EQL, KC_SLSH  \
+  _______, _______, _______, _______, _______, _______, SFT_T(KC_ENT), KC_BSPC, KC_0, KC_BSPC, KC_EQL, KC_SLSH  \
 ),
 
 /* Adjust (Lower + Raise)
