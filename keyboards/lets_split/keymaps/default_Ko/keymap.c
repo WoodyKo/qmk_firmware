@@ -32,21 +32,21 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Qwerty　デフォルト
- * ,------------------------------------------------------------------------------------------------------.
- * |   Tab     |    Q   |    W    |     E     |   R  |   T  |     -    |   Y  |   U  |   I  |   O  |   P  |
- * |-----------+--------+---------+-----------+------+------+----------+------+------+------+------+------|
- * |   Ctrl    |    A   |    S    |     D     |   F  |   G  |     -    |   H  |   J  |   K  |   L  |   ;  |
- * |-----------+--------+---------+-----------+------+------+----------+------+------+------+------+------|
- * |   Shift   |    Z   |    X    |     C     |   V  |   B  |     -    |   N  |   M  |   ,  |   .  |   /  |
- * |-----------+--------+---------+-----------+------+------+----------+------+------+------+------+------|
- * | RAISE,Eisu| FEATURE| Ctrl,TAB| LOWER,Kana| Space|  GUI | Alt,Enter| Bksp | Left | Down |  Up  |Right |
- * `------------------------------------------------------------------------------------------------------'
+ * ,----------------------------------------------------------------------------------------------------------.
+ * |      Q    |      W    |    E   |    R    |     T    | Eisu |     -    |   Y  |   U  |   I  |   O  |   P  |
+ * |-----------+-----------+--------+---------+----------+------+----------+------+------+------+------+------|
+ * |      A    |      S    |    D   |    F    |     G    | Kana |     -    |   H  |   J  |   K  |   L  |   ;  |
+ * |-----------+-----------+--------+---------+----------+------+----------+------+------+------+------+------|
+ * |      Z    |      X    |    C   |    V    |     B    |  TAB |     -    |   N  |   M  |   ,  |   .  |   /  |
+ * |-----------+-----------+--------+---------+----------+------+----------+------+------+------+------+------|
+ * | RAISE,Eisu| LOWER,Kana| FEATURE| Ctrl,TAB| SFT,Space|  GUI | Alt,Enter| Bksp | Left | Down |  Up  |Right |
+ * `----------------------------------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_ortho_4x12(
-  KC_TAB,               KC_Q,    KC_W,          KC_E,                  KC_R,   KC_T,    KC_MINS,       KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    \
-  KC_LCTL,              KC_A,    KC_S,          KC_D,                  KC_F,   KC_G,    KC_MINS,       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, \
-  KC_LSFT,              KC_Z,    KC_X,          KC_C,                  KC_V,   KC_B,    KC_MINS,       KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, \
-  LT(_RAISE, KC_LANG2), FEATURE, CTL_T(KC_TAB), LT(_LOWER, KC_LANG1),  KC_SPC, KC_LGUI, ALT_T(KC_ENT), KC_BSPC, KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT  \
+  KC_Q,                 KC_W,                 KC_E,    KC_R,          KC_T,          KC_LANG1, KC_MINS,       KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    \
+  KC_A,                 KC_S,                 KC_D,    KC_F,          KC_G,          KC_LANG2, KC_MINS,       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, \
+  KC_Z,                 KC_X,                 KC_C,    KC_V,          KC_B,          KC_TAB,   KC_MINS,       KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, \
+  LT(_RAISE, KC_LANG2), LT(_LOWER, KC_LANG1), FEATURE, CTL_T(KC_TAB), SFT_T(KC_SPC), KC_LGUI,  ALT_T(KC_ENT), KC_BSPC, KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT  \
 ),
 
 /* Coding用
