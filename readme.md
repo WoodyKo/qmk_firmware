@@ -35,3 +35,54 @@ QMK is developed and maintained by Jack Humbert of OLKB with contributions from 
 ## Official Website
 
 [qmk.fm](https://qmk.fm) is the official website of QMK, where you can find links to this page, the documentation, and the keyboards supported by QMK.
+
+## How to make my keymap
+* Initial setting
+```
+$ cd qmk_firmware
+
+## prepare python 3.9.1 of pyenv
+$ pyenv install 3.9.1
+$ pyenv local 3.9.1
+$ python -V (checking python version)
+$ util/qmk_install.sh 
+
+## The following message appears but does not execute
+WARNING: You are using pip version 20.2.3; however, version 21.1.1 is available.
+You should consider upgrading via the '/usr/local/var/pyenv/versions/3.9.1/bin/python3 -m pip install --upgrade pip' command.
+```
+* testing keymap make
+```
+$ make lets_split/rev2:default
+
+## If WARNING appears below, follow it
+WARNING: Some git submodules are out of date or modified.
+ Please consider running make git-submodule.
+$ make git-submodule
+```
+* Run again (it should work so far)
+```
+$ make lets_split/rev2:default
+```
+
+
+## Update the forked repository to the latest
+```
+## Get fork source updates
+$ git fetch upstream 
+
+## Merge with local master
+$ git checkout master
+$ git merge upstream/master
+
+$ git push
+```
+
+## Tips
+```
+## my keymap
+$ make lets_split/rev2:default_Ko
+
+## If make doesn't work, delete `.build/`
+$ make clean
+```
